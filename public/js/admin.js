@@ -1,4 +1,4 @@
-// Admin Console Logic - Elena Vance Portfolio
+// Admin Console Logic - Portfolio
 let globalData = null;
 
 document.addEventListener('DOMContentLoaded', async () => {
@@ -78,7 +78,7 @@ function initLogout() {
   btn.addEventListener('click', async () => {
     try {
       await fetch('/api/auth/logout', { method: 'POST' });
-    } catch (e) {}
+    } catch (e) { }
     window.location.href = 'login.html';
   });
 }
