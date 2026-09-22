@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Administrative Suite — Kelina Cyril Portfolio</title>
+
+  <!-- Typography & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap"
+    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+    rel="stylesheet">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/admin.css">
+</head>
+
+<body>
+
+  <div class="admin-layout">
+
+    <!-- Left Navigation Sidebar -->
+    <aside class="admin-sidebar">
+      <div class="admin-sidebar-header">
+        <div class="pulse-dot"></div>
+        <span class="admin-logo">Kelina Cyril</span>
+        <span class="admin-badge">Admin</span>
+      </div>
+
+      <nav class="admin-nav">
+        <button class="admin-nav-item active" data-tab="tab-profile">
+          <span class="material-symbols-outlined">badge</span>
+          <span>Profile &amp; Hero</span>
+        </button>
+
+        <button class="admin-nav-item" data-tab="tab-pillars">
+          <span class="material-symbols-outlined">insights</span>
+          <span>Research Pillars</span>
+        </button>
+
+        <button class="admin-nav-item" data-tab="tab-trajectory">
+          <span class="material-symbols-outlined">history_edu</span>
+          <span>Academic Trajectory</span>
+        </button>
+
+        <button class="admin-nav-item" data-tab="tab-tooling">
+          <span class="material-symbols-outlined">biotech</span>
+          <span>Methodological Tooling</span>
+        </button>
+
+        <button class="admin-nav-item" data-tab="tab-gallery">
+          <span class="material-symbols-outlined">photo_library</span>
+          <span>Microscopy &amp; Media</span>
+        </button>
+
+        <button class="admin-nav-item" data-tab="tab-blog">
+          <span class="material-symbols-outlined">article</span>
+          <span>Research Blog</span>
+        </button>
+
+        <button class="admin-nav-item" data-tab="tab-inquiries">
+          <span class="material-symbols-outlined">mark_email_unread</span>
+          <span>Inquiries &amp; Messages</span>
+          <span class="admin-badge" id="sidebar-inquiry-badge" style="display: none; margin-left: auto;">0</span>
+        </button>
+
+        <button class="admin-nav-item" data-tab="tab-settings">
+          <span class="material-symbols-outlined">settings</span>
+          <span>Settings &amp; Contact</span>
+        </button>
+      </nav>
+
+      <div class="admin-sidebar-footer">
+        <a href="/" target="_blank" class="action-btn" style="width: 100%; justify-content: center; padding: 0.6rem;">
+          <span class="material-symbols-outlined">open_in_new</span>
+          <span>View Live Site</span>
+        </a>
+        <button id="logout-btn" class="action-btn delete"
+          style="width: 100%; justify-content: center; padding: 0.6rem;">
+          <span class="material-symbols-outlined">logout</span>
+          <span>Log Out</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="admin-main">
+      <div class="admin-topbar">
+        <h1 class="admin-topbar-title" id="topbar-title">Profile &amp; Hero Information</h1>
+        <div class="admin-topbar-actions">
+          <span id="session-badge"
+            style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--on-surface-variant);">
+            Connected as <strong id="admin-user-display" style="color: var(--on-surface);">admin</strong>
+          </span>
+        </div>
+      </div>
+
+      <div class="admin-content-body">
+
+        <!-- ======================================================== -->
+        <!-- TAB 1: PROFILE & HERO                                   -->
+        <!-- ======================================================== -->
+        <section class="tab-panel active" id="tab-profile">
+          <div class="admin-card">
+            <div class="admin-card-header">
+              <div>
+                <h2 class="admin-card-title">Personal Biography &amp; Presentation</h2>
+                <p class="admin-card-desc">Edit your headline, doctoral specialization, and editorial statement.</p>
+              </div>
+            </div>
+
+            <!-- Profile Picture Upload -->
+            <div class="avatar-edit-box">
+              <img src="" alt="Profile avatar" class="avatar-preview-img" id="admin-avatar-preview">
+              <div style="flex: 1;">
+                <label class="form-label">Profile Portrait</label>
+                <div style="display: flex; gap: 0.75rem; align-items: center;">
+                  <input type="file" id="avatar-file-input" accept="image/*" style="display: none;">
+                  <button type="button" class="btn btn-secondary" id="avatar-upload-trigger">
+                    <span class="material-symbols-outlined">upload</span>
+                    <span>Upload New Portrait</span>
+                  </button>
+                  <span id="avatar-status-msg" style="font-size: 0.8125rem; color: var(--on-surface-variant);">Max 15MB
+                    (JPEG, PNG, WebP)</span>
+                </div>
+                <div style="margin-top: 0.75rem;">
+                  <label class="form-label" style="font-size: 0.625rem;">Portrait Caption Text</label>
+                  <input type="text" id="prof-avatar-caption" class="form-input"
+                    placeholder="e.g. Cellular Neurobiology & Bioimaging">
+                </div>
+              </div>
+            </div>
+
+            <form id="form-profile">
+              <div class="form-grid cols-2" style="margin-bottom: 1.25rem;">
+                <div>
+                  <label class="form-label" for="prof-name">Full Name</label>
+                  <input type="text" id="prof-name" class="form-input" required>
+                </div>
+                <div>
+                  <label class="form-label" for="prof-title">Academic Subtitle / Title</label>
+                  <input type="text" id="prof-title" class="form-input" required>
+                </div>
+              </div>
+
+              <div class="form-grid cols-2" style="margin-bottom: 1.25rem;">
+                <div>
+                  <label class="form-label" for="prof-badge">Header Pill Badge</label>
+                  <input type="text" id="prof-badge" class="form-input" placeholder="Personal Introduction">
+                </div>
+                <div>
+                  <label class="form-label" for="prof-tagline">Lead Tagline (Editorial Quote)</label>
+                  <input type="text" id="prof-tagline" class="form-input">
+                </div>
+              </div>
+
+              <div style="margin-bottom: 1.25rem;">
+                <label class="form-label" for="prof-bio-1">Bio Paragraph 1 (Mission &amp; Focus)</label>
+                <textarea id="prof-bio-1" class="form-textarea" required></textarea>
+              </div>
+
+              <div style="margin-bottom: 1.25rem;">
+                <label class="form-label" for="prof-bio-2">Bio Paragraph 2 (Philosophy &amp; Vision)</label>
+                <textarea id="prof-bio-2" class="form-textarea"></textarea>
+              </div>
+
+              <div class="form-grid cols-3" style="margin-bottom: 1.75rem;">
+                <div>
+                  <label class="form-label" for="prof-linkedin">LinkedIn Profile URL</label>
+                  <input type="url" id="prof-linkedin" class="form-input">
+                </div>
+                <div>
+                  <label class="form-label" for="prof-scholar">Google Scholar URL</label>
+                  <input type="url" id="prof-scholar" class="form-input">
+                </div>
+                <div>
+                  <label class="form-label" for="prof-orcid">ORCID Identifier</label>
+                  <input type="text" id="prof-orcid" class="form-input" placeholder="0000-0002-1845-9201">
+                </div>
+              </div>
+
+              <div style="display: flex; justify-content: flex-end;">
+                <button type="submit" class="btn btn-primary" id="save-profile-btn">
+                  <span class="material-symbols-outlined">save</span>
+                  <span>Save Profile Changes</span>
+                </button>
+              </div>
+            </form>
+          </div>
+        </section>
+
+        <!-- ======================================================== -->
+        <!-- TAB 2: RESEARCH PILLARS                                 -->
+        <!-- ======================================================== -->
+        <section class="tab-panel" id="tab-pillars">
+          <div class="admin-card">
+            <div class="admin-card-header">
+              <div>
+                <h2 class="admin-card-title">Doctoral Investigation Pillars</h2>
+                <p class="admin-card-desc">Manage the four focal areas featured in the Bento grid.</p>
+              </div>
+              <button type="button" class="btn btn-primary" id="btn-add-pillar">
+                <span class="material-symbols-outlined">add</span>
+                <span>Add New Pillar</span>
+              </button>
+            </div>
+
+            <div id="admin-pillars-list">
+              <!-- Dynamically populated rows -->
+            </div>
+          </div>
+        </section>
+
+        <!-- ======================================================== -->
+        <!-- TAB 3: ACADEMIC TRAJECTORY                              -->
+        <!-- ======================================================== -->
+        <section class="tab-panel" id="tab-trajectory">
+          <div class="admin-card">
+            <div class="admin-card-header">
+              <div>
+                <h2 class="admin-card-title">Academic Trajectory &amp; Training</h2>
+                <p class="admin-card-desc">Manage education milestones, degrees, and predoctoral fellowships.</p>
+              </div>
+              <button type="button" class="btn btn-primary" id="btn-add-trajectory">
+                <span class="material-symbols-outlined">add</span>
+                <span>Add Milestone</span>
+              </button>
+            </div>
+
+            <div id="admin-trajectory-list">
+              <!-- Dynamically populated rows -->
+            </div>
+          </div>
+        </section>
+
+        <!-- ======================================================== -->
+        <!-- TAB 4: METHODOLOGICAL TOOLING                           -->
+        <!-- ======================================================== -->
+        <section class="tab-panel" id="tab-tooling">
+          <div class="admin-card">
+            <div class="admin-card-header">
+              <div>
+                <h2 class="admin-card-title">Methodological Arsenal &amp; Instrumentation</h2>
+                <p class="admin-card-desc">Configure technical skill chips and biosafety qualifications.</p>
+              </div>
+              <button type="button" class="btn btn-primary" id="btn-save-tooling">
+                <span class="material-symbols-outlined">save</span>
+                <span>Save Tooling</span>
+              </button>
+            </div>
+
+            <div id="admin-tooling-categories">
+              <!-- Tooling categories rendered here -->
+            </div>
+
+            <div style="margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--outline-variant);">
+              <h3 class="admin-card-title" style="font-size: 1rem; margin-bottom: 1rem;">Laboratory Safety Certification
+              </h3>
+              <div class="form-grid cols-2">
+                <div>
+                  <label class="form-label" for="cert-title-input">Certification Title</label>
+                  <input type="text" id="cert-title-input" class="form-input">
+                </div>
+                <div>
+                  <label class="form-label" for="cert-desc-input">Certification Scope &amp; Role</label>
+                  <input type="text" id="cert-desc-input" class="form-input">
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ======================================================== -->
+        <!-- TAB 5: MICROSCOPY & MEDIA GALLERY (CRUD)                -->
+        <!-- ======================================================== -->
+        <section class="tab-panel" id="tab-gallery">
+          <div class="admin-card">
+            <div class="admin-card-header">
+              <div>
+                <h2 class="admin-card-title">Microscopy &amp; Bioimaging Media Management</h2>
+                <p class="admin-card-desc">Upload, annotate, and organize high-resolution scientific specimens.</p>
+              </div>
+              <button type="button" class="btn btn-primary" id="btn-add-media">
+                <span class="material-symbols-outlined">add_photo_alternate</span>
+                <span>Upload Specimen</span>
+              </button>
+            </div>
+
+            <div class="admin-gallery-grid" id="admin-gallery-grid">
+              <!-- Dynamically populated cards -->
+            </div>
+          </div>
+        </section>
+
+        <!-- ======================================================== -->
+        <!-- TAB 6: RESEARCH BLOG DISPATCHES (CRUD)                   -->
+        <!-- ======================================================== -->
+        <section class="tab-panel" id="tab-blog">
+          <div class="admin-card">
+            <div class="admin-card-header">
+              <div>
+                <h2 class="admin-card-title">Research Blog &amp; Dispatches Management</h2>
+                <p class="admin-card-desc">Publish, edit, and curate doctoral reflections, nanoscopy protocols, and lab
+                  articles.</p>
+              </div>
+              <button type="button" class="btn btn-primary" id="btn-add-blog">
+                <span class="material-symbols-outlined">edit_note</span>
+                <span>New Article</span>
+              </button>
+            </div>
+
+            <div id="admin-blog-list" style="display: flex; flex-direction: column; gap: 1rem;">
+              <!-- Dynamically populated blog items -->
+            </div>
+          </div>
+        </section>
+
+        <!-- ======================================================== -->
+        <!-- TAB 7: INQUIRIES & COLLABORATION MESSAGES               -->
+        <!-- ======================================================== -->
+        <section class="tab-panel" id="tab-inquiries">
+          <div class="admin-card">
+            <div class="admin-card-header">
+              <div>
+                <h2 class="admin-card-title">Inquiries &amp; Collaboration Messages</h2>
+                <p class="admin-card-desc">Messages submitted via the public Contact &amp; Collaboration page.</p>
+              </div>
+              <button type="button" class="btn btn-secondary" id="inq-refresh-btn">
+                <span class="material-symbols-outlined">refresh</span>
+                <span>Refresh</span>
+              </button>
+            </div>
+
+            <!-- Inquiries List Container -->
+            <div id="inq-list-container">
+              <!-- Dynamically populated via admin.js -->
+              <p style="color: var(--on-surface-variant); padding: 2rem; text-align: center;">Loading inquiries...</p>
+            </div>
+
+            <!-- Inquiries Pagination Bar -->
+            <div class="inq-pagination-bar" id="inq-pagination-bar" style="display: none;">
+              <div style="font-size: 0.875rem; color: var(--on-surface-variant);">
+                Showing page <strong id="inq-page-num" style="color: var(--on-surface);">1</strong> of <strong id="inq-total-pages" style="color: var(--on-surface);">1</strong> (<span id="inq-total-count">0</span> total notes)
+              </div>
+              <div style="display: flex; gap: 0.5rem;">
+                <button type="button" class="action-btn" id="inq-prev-btn" disabled>
+                  <span class="material-symbols-outlined">chevron_left</span>
+                  <span>Previous</span>
+                </button>
+                <button type="button" class="action-btn" id="inq-next-btn" disabled>
+                  <span>Next</span>
+                  <span class="material-symbols-outlined">chevron_right</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ======================================================== -->
+        <!-- TAB 8: SETTINGS & CONTACT                               -->
+        <!-- ======================================================== -->
+        <section class="tab-panel" id="tab-settings">
+          <div class="admin-card">
+            <div class="admin-card-header">
+              <div>
+                <h2 class="admin-card-title">Laboratory Affiliation &amp; Contact Telemetry</h2>
+                <p class="admin-card-desc">Information displayed in the public footer and collaboration card.</p>
+              </div>
+            </div>
+
+            <form id="form-contact">
+              <div class="form-grid cols-2" style="margin-bottom: 1.25rem;">
+                <div>
+                  <label class="form-label" for="contact-lab-name">Laboratory / Group Name</label>
+                  <input type="text" id="contact-lab-name" class="form-input" required>
+                </div>
+                <div>
+                  <label class="form-label" for="contact-email">Inquiry Email Address</label>
+                  <input type="email" id="contact-email" class="form-input" required>
+                </div>
+              </div>
+
+              <div class="form-grid cols-2" style="margin-bottom: 1.25rem;">
+                <div>
+                  <label class="form-label" for="contact-department">Department &amp; Center</label>
+                  <input type="text" id="contact-department" class="form-input">
+                </div>
+                <div>
+                  <label class="form-label" for="contact-office-loc">Building &amp; Room / Office</label>
+                  <input type="text" id="contact-office-loc" class="form-input">
+                </div>
+              </div>
+
+              <div style="margin-bottom: 1.25rem;">
+                <label class="form-label" for="contact-mission">Laboratory Mission / Focus Subtitle</label>
+                <input type="text" id="contact-mission" class="form-input">
+              </div>
+
+              <div style="margin-bottom: 1.75rem;">
+                <label class="form-label" for="contact-copyright-text">Copyright Notice</label>
+                <input type="text" id="contact-copyright-text" class="form-input">
+              </div>
+
+              <div style="display: flex; justify-content: flex-end;">
+                <button type="submit" class="btn btn-primary">
+                  <span class="material-symbols-outlined">save</span>
+                  <span>Save Contact Details</span>
+                </button>
+              </div>
+            </form>
+          </div>
+
+          <!-- Password change -->
+          <div class="admin-card">
+            <div class="admin-card-header">
+              <div>
+                <h2 class="admin-card-title">Administrative Credentials</h2>
+                <p class="admin-card-desc">Update the password required to access the /login portal.</p>
+              </div>
+            </div>
+
+            <form id="form-password" style="max-width: 24rem;">
+              <div style="margin-bottom: 1.25rem;">
+                <label class="form-label" for="pwd-current">Current Password</label>
+                <input type="password" id="pwd-current" class="form-input" required autocomplete="current-password">
+              </div>
+
+              <div style="margin-bottom: 1.5rem;">
+                <label class="form-label" for="pwd-new">New Password (min 6 characters)</label>
+                <input type="password" id="pwd-new" class="form-input" required minlength="6"
+                  autocomplete="new-password">
+              </div>
+
+              <button type="submit" class="btn btn-secondary">
+                <span class="material-symbols-outlined">key</span>
+                <span>Update Password</span>
+              </button>
+            </form>
+          </div>
+        </section>
+
+      </div>
+    </main>
+
+  </div>
+
+  <!-- ======================================================== -->
+  <!-- MODAL: RESEARCH PILLAR (CREATE / EDIT)                  -->
+  <!-- ======================================================== -->
+  <div class="admin-modal-backdrop" id="modal-pillar">
+    <div class="admin-modal">
+      <div class="admin-modal-header">
+        <h3 class="admin-card-title" id="modal-pillar-title">Add Research Pillar</h3>
+        <button type="button" class="action-btn" onclick="closePillarModal()"><span
+            class="material-symbols-outlined">close</span></button>
+      </div>
+      <form id="form-pillar-modal">
+        <input type="hidden" id="modal-pillar-id">
+        <div class="form-grid cols-2" style="margin-bottom: 1.25rem;">
+          <div>
+            <label class="form-label" for="pillar-modal-num">Pillar Number (e.g. 01)</label>
+            <input type="text" id="pillar-modal-num" class="form-input" required placeholder="01">
+          </div>
+          <div>
+            <label class="form-label" for="pillar-modal-icon">Material Icon Name</label>
+            <input type="text" id="pillar-modal-icon" class="form-input" required
+              placeholder="insights, blur_on, hub, schema">
+          </div>
+        </div>
+
+        <div style="margin-bottom: 1.25rem;">
+          <label class="form-label" for="pillar-modal-heading">Pillar Title</label>
+          <input type="text" id="pillar-modal-heading" class="form-input" required
+            placeholder="Dendritic Spine Kinetics...">
+        </div>
+
+        <div style="margin-bottom: 1.25rem;">
+          <label class="form-label" for="pillar-modal-desc">Description</label>
+          <textarea id="pillar-modal-desc" class="form-textarea" required
+            placeholder="Detailed investigation overview..."></textarea>
+        </div>
+
+        <div class="form-grid cols-2" style="margin-bottom: 1.25rem;">
+          <div>
+            <label class="form-label" for="pillar-modal-tag">Pillar Tag</label>
+            <input type="text" id="pillar-modal-tag" class="form-input" placeholder="Primary Focus, Imaging Platform">
+          </div>
+          <div>
+            <label class="form-label" for="pillar-modal-theme">Color Accent Theme</label>
+            <select id="pillar-modal-theme" class="form-select">
+              <option value="primary">Synaptic Violet (Primary)</option>
+              <option value="secondary">Axon Teal (Secondary)</option>
+              <option value="tertiary">Deep Neuro Teal (Tertiary)</option>
+              <option value="dark">Slate Obsidian (Dark)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="admin-modal-footer">
+          <button type="button" class="btn btn-secondary" onclick="closePillarModal()">Cancel</button>
+          <button type="submit" class="btn btn-primary" id="btn-pillar-submit">Save Pillar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ======================================================== -->
+  <!-- MODAL: ACADEMIC TRAJECTORY (CREATE / EDIT)              -->
+  <!-- ======================================================== -->
+  <div class="admin-modal-backdrop" id="modal-trajectory">
+    <div class="admin-modal">
+      <div class="admin-modal-header">
+        <h3 class="admin-card-title" id="modal-traj-title">Add Academic Milestone</h3>
+        <button type="button" class="action-btn" onclick="closeTrajectoryModal()"><span
+            class="material-symbols-outlined">close</span></button>
+      </div>
+      <form id="form-traj-modal">
+        <input type="hidden" id="modal-traj-id">
+        <div class="form-grid cols-2" style="margin-bottom: 1.25rem;">
+          <div>
+            <label class="form-label" for="traj-modal-badge">Status Badge Text</label>
+            <input type="text" id="traj-modal-badge" class="form-input" required placeholder="Candidate in Progress">
+          </div>
+          <div>
+            <label class="form-label" for="traj-modal-period">Dates / Years</label>
+            <input type="text" id="traj-modal-period" class="form-input" required placeholder="2021 – Present">
+          </div>
+        </div>
+
+        <div style="margin-bottom: 1.25rem;">
+          <label class="form-label" for="traj-modal-degree">Degree or Fellowship Title</label>
+          <input type="text" id="traj-modal-degree" class="form-input" required
+            placeholder="Ph.D. in Cellular & Molecular Neurobiology">
+        </div>
+
+        <div style="margin-bottom: 1.25rem;">
+          <label class="form-label" for="traj-modal-inst">Department / University / Institute</label>
+          <input type="text" id="traj-modal-inst" class="form-input" required
+            placeholder="Department of Neurobiology...">
+        </div>
+
+        <div style="margin-bottom: 1.25rem;">
+          <label class="form-label" for="traj-modal-desc">Details / Dissertation / Achievements</label>
+          <textarea id="traj-modal-desc" class="form-textarea"
+            placeholder="Dissertation details, honors, fellowships..."></textarea>
+        </div>
+
+        <div style="margin-bottom: 1.25rem;">
+          <label class="form-label" for="traj-modal-theme">Color Theme</label>
+          <select id="traj-modal-theme" class="form-select">
+            <option value="primary">Synaptic Violet</option>
+            <option value="secondary">Axon Cyan</option>
+            <option value="tertiary">Neuro Teal</option>
+          </select>
+        </div>
+
+        <div class="admin-modal-footer">
+          <button type="button" class="btn btn-secondary" onclick="closeTrajectoryModal()">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save Milestone</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ======================================================== -->
+  <!-- MODAL: MICROSCOPY SPECIMEN UPLOAD & EDIT                -->
+  <!-- ======================================================== -->
+  <div class="admin-modal-backdrop" id="modal-media">
+    <div class="admin-modal">
+      <div class="admin-modal-header">
+        <h3 class="admin-card-title" id="modal-media-title">Upload Microscopy Specimen</h3>
+        <button type="button" class="action-btn" onclick="closeMediaModal()"><span
+            class="material-symbols-outlined">close</span></button>
+      </div>
+      <form id="form-media-modal">
+        <input type="hidden" id="modal-media-id">
+
+        <!-- Image file upload input (required for new, optional for edit) -->
+        <div id="media-upload-container" style="margin-bottom: 1.25rem;">
+          <label class="form-label" for="media-file-input">Specimen Image File</label>
+          <input type="file" id="media-file-input" class="form-input" accept="image/*">
+          <div id="media-file-preview-wrap" style="display: none; margin-top: 0.75rem;">
+            <img src="" alt="Selected Preview" id="media-file-preview"
+              style="max-height: 12rem; border-radius: var(--radius-lg); border: 1px solid var(--outline-variant);">
+          </div>
+        </div>
+
+        <div class="form-grid cols-2" style="margin-bottom: 1.25rem;">
+          <div>
+            <label class="form-label" for="media-modal-title">Specimen Title</label>
+            <input type="text" id="media-modal-title" class="form-input" required
+              placeholder="e.g. Dendritic Spine Nanometry">
+          </div>
+          <div>
+            <label class="form-label" for="media-modal-tech">Imaging Technique</label>
+            <input type="text" id="media-modal-tech" class="form-input" placeholder="e.g. STED Super-Resolution">
+          </div>
+        </div>
+
+        <div class="form-grid cols-2" style="margin-bottom: 1.25rem;">
+          <div>
+            <label class="form-label" for="media-modal-mag">Magnification / Scale</label>
+            <input type="text" id="media-modal-mag" class="form-input" placeholder="e.g. 100x Oil / 500nm scale">
+          </div>
+          <div>
+            <label class="form-label" for="media-modal-stain">Staining / Fluorophores</label>
+            <input type="text" id="media-modal-stain" class="form-input"
+              placeholder="e.g. Actin / Synaptopodin (AF647)">
+          </div>
+        </div>
+
+        <div style="margin-bottom: 1.25rem;">
+          <label class="form-label" for="media-modal-source">Source / Publication / Dataset Link (Optional)</label>
+          <input type="url" id="media-modal-source" class="form-input" placeholder="https://doi.org/... or https://...">
+        </div>
+
+        <div style="margin-bottom: 1.25rem;">
+          <label class="form-label" for="media-modal-desc">Scientific Description / Caption</label>
+          <textarea id="media-modal-desc" class="form-textarea"
+            placeholder="Describe biological observation, assay conditions, or findings..."></textarea>
+        </div>
+
+        <div class="admin-modal-footer">
+          <button type="button" class="btn btn-secondary" onclick="closeMediaModal()">Cancel</button>
+          <button type="submit" class="btn btn-primary" id="btn-media-submit">Upload Specimen</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ======================================================== -->
+  <!-- MODAL: BLOG ARTICLE (CREATE / EDIT)                      -->
+  <!-- ======================================================== -->
+  <div class="admin-modal-backdrop" id="modal-blog">
+    <div class="admin-modal" style="max-width: 44rem;">
+      <div class="admin-modal-header">
+        <h3 class="admin-card-title" id="modal-blog-title">Write New Article</h3>
+        <button type="button" class="action-btn" onclick="closeBlogAdminModal()"><span
+            class="material-symbols-outlined">close</span></button>
+      </div>
+      <form id="form-blog-modal">
+        <input type="hidden" id="modal-blog-id">
+
+        <div style="margin-bottom: 1.25rem;">
+          <label class="form-label" for="blog-modal-title">Article Title *</label>
+          <input type="text" id="blog-modal-title" class="form-input" required
+            placeholder="e.g. Resolving Nanometer-Scale Actin Dynamics in Dendritic Spines with STED">
+        </div>
+
+        <div class="form-grid cols-3" style="margin-bottom: 1.25rem;">
+          <div>
+            <label class="form-label" for="blog-modal-category">Category / Topic</label>
+            <input type="text" id="blog-modal-category" class="form-input" placeholder="e.g. Nanoscopy Protocols">
+          </div>
+          <div>
+            <label class="form-label" for="blog-modal-date">Date</label>
+            <input type="date" id="blog-modal-date" class="form-input">
+          </div>
+          <div>
+            <label class="form-label" for="blog-modal-readtime">Reading Time</label>
+            <input type="text" id="blog-modal-readtime" class="form-input" placeholder="e.g. 6 min read">
+          </div>
+        </div>
+
+        <!-- Cover image upload or URL -->
+        <div
+          style="margin-bottom: 1.25rem; padding: 1rem; border: 1px dashed var(--outline); border-radius: var(--radius-lg); background: var(--surface-container-low);">
+          <label class="form-label" style="margin-bottom: 0.5rem;">Cover Banner Image</label>
+          <div style="display: flex; gap: 0.75rem; align-items: center; margin-bottom: 0.75rem;">
+            <input type="file" id="blog-file-input" class="form-input" accept="image/*" style="font-size: 0.8125rem;">
+          </div>
+          <div style="font-size: 0.75rem; color: var(--on-surface-variant); margin-bottom: 0.5rem;">Or provide an
+            existing image path / URL:</div>
+          <input type="text" id="blog-modal-imageurl" class="form-input"
+            placeholder="e.g. /uploads/dendritic_spines_sted.jpg or https://...">
+          <div id="blog-cover-preview-wrap" style="display: none; margin-top: 0.75rem;">
+            <img src="" alt="Selected Preview" id="blog-cover-preview"
+              style="max-height: 8rem; border-radius: var(--radius-md); border: 1px solid var(--outline-variant);">
+          </div>
+        </div>
+
+        <div style="margin-bottom: 1.25rem;">
+          <label class="form-label" for="blog-modal-excerpt">Article Excerpt / Card Preview Summary</label>
+          <textarea id="blog-modal-excerpt" class="form-textarea" rows="2"
+            placeholder="Short description displayed on article cards..."></textarea>
+        </div>
+
+        <div style="margin-bottom: 1.5rem;">
+          <label class="form-label" for="blog-modal-content">Article Body (Supports Headings, Quotes, Code)</label>
+          <textarea id="blog-modal-content" class="form-textarea" rows="8"
+            placeholder="Full article content... Use ### for headings, > for blockquotes, - for bullet lists..."></textarea>
+        </div>
+
+        <div class="admin-modal-footer">
+          <button type="button" class="btn btn-secondary" onclick="closeBlogAdminModal()">Cancel</button>
+          <button type="submit" class="btn btn-primary" id="btn-blog-submit">Publish Article</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- Scripts -->
+  <script src="/js/admin.js"></script>
+</body>
+
+</html>

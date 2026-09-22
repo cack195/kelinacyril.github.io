@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Portal Login — Elena Vance Portfolio</title>
+  
+  <!-- Typography & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+  
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="/css/style.css">
+  <style>
+    .login-wrapper {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      position: relative;
+      background-color: var(--surface);
+    }
+    
+    .login-card {
+      background-color: #ffffff;
+      border: 1px solid var(--outline-variant);
+      border-radius: var(--radius-xl);
+      padding: 2.5rem 2.25rem;
+      max-width: 26rem;
+      width: 100%;
+      box-shadow: var(--shadow-floating);
+      position: relative;
+      z-index: 10;
+    }
+
+    .login-header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .login-title {
+      font-family: var(--font-editorial);
+      font-size: 2rem;
+      font-weight: 500;
+      letter-spacing: -0.015em;
+      color: var(--on-surface);
+      margin-top: 0.5rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .login-subtitle {
+      font-size: 0.875rem;
+      color: var(--on-surface-variant);
+      line-height: 1.5;
+    }
+
+    .form-group {
+      margin-bottom: 1.25rem;
+    }
+
+    .form-label {
+      display: block;
+      font-family: var(--font-mono);
+      font-size: 0.6875rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--on-surface-variant);
+      margin-bottom: 0.4rem;
+    }
+
+    .form-input {
+      width: 100%;
+      padding: 0.7rem 0.85rem;
+      border: 1px solid var(--outline);
+      border-radius: var(--radius-lg);
+      font-family: var(--font-sans);
+      font-size: 0.9375rem;
+      color: var(--on-surface);
+      background-color: #ffffff;
+      outline: none;
+      transition: all 0.15s ease;
+    }
+
+    .form-input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.15);
+    }
+
+    .login-btn {
+      width: 100%;
+      justify-content: center;
+      padding: 0.75rem 1rem;
+      font-size: 0.9375rem;
+      margin-top: 0.5rem;
+    }
+
+    .error-alert {
+      display: none;
+      padding: 0.65rem 0.85rem;
+      border-radius: var(--radius-lg);
+      background-color: #fef2f2;
+      border: 1px solid #fecaca;
+      color: #991b1b;
+      font-size: 0.8125rem;
+      margin-bottom: 1.25rem;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.8125rem;
+      color: var(--on-surface-variant);
+      margin-top: 1.5rem;
+      transition: color 0.15s ease;
+    }
+
+    .back-link:hover {
+      color: var(--primary);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="login-wrapper">
+    <div class="ambient-orb-primary" style="top: 10%; right: 20%;"></div>
+    <div class="ambient-orb-secondary" style="bottom: 10%; left: 20%;"></div>
+
+    <div class="login-card">
+      <div class="login-header">
+        <div class="badge-tag" style="margin: 0 auto;">
+          <span class="pulse-dot"></span>
+          <span>Laboratory Access Portal</span>
+        </div>
+        <h1 class="login-title">Sign In</h1>
+        <p class="login-subtitle">
+          Manage media, research pillars, and curriculum vitae for the Elena Vance portfolio.
+        </p>
+      </div>
+
+      <div class="error-alert" id="login-error">
+        <span class="material-symbols-outlined" style="font-size: 1.1rem;">error</span>
+        <span id="error-message">Invalid credentials</span>
+      </div>
+
+      <form id="login-form">
+        <div class="form-group">
+          <label for="username" class="form-label">Administrator ID</label>
+          <input type="text" id="username" name="username" class="form-input" placeholder="e.g. admin" required autofocus autocomplete="username">
+        </div>
+
+        <div class="form-group">
+          <label for="password" class="form-label">Access Token / Password</label>
+          <input type="password" id="password" name="password" class="form-input" placeholder="••••••••••••" required autocomplete="current-password">
+        </div>
+
+        <button type="submit" class="btn btn-primary login-btn" id="submit-btn">
+          <span class="material-symbols-outlined" style="font-size: 1.1rem;">lock_open</span>
+          <span>Access Admin Console</span>
+        </button>
+      </form>
+
+      <div style="text-align: center;">
+        <a href="/" class="back-link">
+          <span class="material-symbols-outlined" style="font-size: 0.95rem;">arrow_back</span>
+          <span>Return to Public Portfolio</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const form = document.getElementById('login-form');
+    const errorAlert = document.getElementById('login-error');
+    const errorMsg = document.getElementById('error-message');
+    const submitBtn = document.getElementById('submit-btn');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      errorAlert.style.display = 'none';
+
+      const username = form.username.value.trim();
+      const password = form.password.value;
+
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = '<span class="material-symbols-outlined animate-spin" style="font-size: 1.1rem;">sync</span><span>Verifying...</span>';
+
+      try {
+        const res = await fetch('/api/auth/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ username, password })
+        });
+
+        const data = await res.json();
+        if (res.ok && data.success) {
+          window.location.href = '/admin';
+        } else {
+          errorMsg.textContent = data.error || 'Authentication failed';
+          errorAlert.style.display = 'flex';
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = '<span class="material-symbols-outlined" style="font-size: 1.1rem;">lock_open</span><span>Access Admin Console</span>';
+        }
+      } catch (err) {
+        errorMsg.textContent = 'Network or server error during sign in';
+        errorAlert.style.display = 'flex';
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = '<span class="material-symbols-outlined" style="font-size: 1.1rem;">lock_open</span><span>Access Admin Console</span>';
+      }
+    });
+  </script>
+</body>
+</html>

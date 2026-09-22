@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Research Dispatches &amp; Blog — Kelina Cyril</title>
+  <meta name="description"
+    content="Field notes, nanoscopy protocols, and scientific reflections on synaptic plasticity, super-resolution imaging, and cellular connectomics.">
+
+  <!-- Typography & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap"
+    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+    rel="stylesheet">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+
+  <!-- Top Sticky Header -->
+  <header class="site-header" id="site-header">
+    <div class="container">
+      <a href="/" class="brand-title" id="header-brand-name" aria-label="Kelina Cyril">
+        <img src="/data/name.png" alt="Kelina Cyril" class="brand-logo-img">
+      </a>
+
+      <nav class="nav-menu" id="desktop-nav">
+        <a href="/" class="nav-link">Overview &amp; Works</a>
+        <!-- <a href="/#pillars" class="nav-link">Research Pillars</a>
+        <a href="/#trajectory" class="nav-link">Trajectory &amp; Tooling</a> -->
+        <a href="/gallery" class="nav-link">Microscopy Gallery</a>
+        <a href="/blog" class="nav-link active">Research Blog</a>
+        <a href="/contact" class="nav-link">Contact &amp; Collab</a>
+      </nav>
+
+      <button class="mobile-toggle-btn" id="mobile-toggle" aria-label="Toggle navigation">
+        <span class="material-symbols-outlined">menu</span>
+      </button>
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <div class="mobile-nav-panel" id="mobile-menu">
+      <a href="/" class="nav-link">Overview &amp; Works</a>
+      <!-- <a href="/#pillars" class="nav-link">Research Pillars</a> -->
+      <!-- <a href="/#trajectory" class="nav-link">Trajectory &amp; Tooling</a> -->
+      <a href="/gallery" class="nav-link">Microscopy Gallery</a>
+      <a href="/blog" class="nav-link active">Research Blog</a>
+      <a href="/contact" class="nav-link">Contact &amp; Collab</a>
+    </div>
+  </header>
+
+  <main style="padding-top: 5rem; flex: 1;">
+
+    <!-- Dedicated Blog Hero -->
+    <section
+      style="padding: 4rem 0 2.5rem; background: radial-gradient(circle at top right, rgba(124, 58, 237, 0.06) 0%, transparent 60%); border-bottom: 1px solid var(--outline-variant);">
+      <div class="container">
+        <div style="max-width: 50rem;">
+          <div style="display: inline-flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem;">
+            <span class="gallery-pill" style="font-size: 0.75rem; padding: 0.35rem 0.75rem;">
+              <span class="material-symbols-outlined" style="font-size: 0.95rem;">edit_note</span>
+              <span>Doctoral Dispatches &amp; Research Notes</span>
+            </span>
+          </div>
+          <h1
+            style="font-family: var(--font-editorial); font-size: clamp(2.2rem, 4.5vw, 3.2rem); font-weight: 400; color: var(--on-surface); line-height: 1.2; margin-bottom: 1rem;">
+            Research Dispatches &amp; Field Notes
+          </h1>
+          <p style="font-size: 1.0625rem; color: var(--on-surface-variant); line-height: 1.65;">
+            In-depth reflections, super-resolution microscopy protocols, and computational observations from the bench.
+            Click any article card to expand into an immersive, distraction-free reading pop-up.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Blog Grid & Topics Section -->
+    <section class="section-blog" style="padding: 0rem 0 0rem;">
+      <div class="container">
+
+        <!-- Topic Filters -->
+        <!-- <div class="filter-bar" id="blog-filter-bar">
+          <button class="filter-chip active" data-filter="all">All Dispatches</button>
+          <button class="filter-chip" data-filter="Nanoscopy">Nanoscopy Protocols</button>
+          <button class="filter-chip" data-filter="Imaging">Functional Imaging</button>
+          <button class="filter-chip" data-filter="Bioinformatics">Bioinformatics &amp; AI</button>
+        </div> -->
+
+        <!-- Blog Cards Grid -->
+        <div class="blog-grid" id="blog-container">
+          <!-- Dynamically rendered blog cards with hover micro-animations -->
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Editorial Scientific Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-content">
+        <div>
+          <div class="footer-brand">
+            <span class="footer-lab-name" id="footer-lab-name">Synapse Laboratory</span>
+            <span class="footer-lab-badge">Cellular &amp; Molecular Neurobiology</span>
+          </div>
+          <p class="footer-mission" id="footer-mission-text">
+            Department of Biotechnology, IIT Jodhpur. Dedicated to high-resolution imaging and functional analysis of
+            neuronal circuits and their plasticity.
+          </p>
+        </div>
+
+        <div class="footer-links">
+          <span id="footer-copyright">© 2026 Kelina Cyril. All research rights reserved.</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Full-Page Article Reader Modal Pop-up -->
+  <div class="blog-modal-backdrop" id="blog-modal-backdrop" aria-hidden="true" role="dialog"
+    aria-labelledby="modal-article-title">
+    <div class="blog-modal-dialog" id="blog-modal-dialog">
+
+      <!-- Top Sticky Bar with Back Button & Close Icon -->
+      <div class="blog-modal-topbar">
+        <button type="button" class="blog-modal-back-btn" id="blog-modal-back" aria-label="Return to Blog List">
+          <span class="material-symbols-outlined" style="font-size: 1rem;">arrow_back</span>
+          <span>Back to Dispatches</span>
+        </button>
+        <button type="button" class="blog-modal-close-btn" id="blog-modal-close" aria-label="Close article pop-up">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </div>
+
+      <!-- Scrollable Article Reader Body -->
+      <div class="blog-modal-scroll" id="blog-modal-scroll">
+        <img src="" alt="Cover banner" class="blog-modal-cover-img" id="modal-article-cover" style="display: none;">
+
+        <div class="blog-modal-category" id="modal-article-category">
+          <span class="material-symbols-outlined" style="font-size: 0.9rem;">category</span>
+          <span id="modal-article-category-text">Nanoscopy Protocols</span>
+        </div>
+
+        <h1 class="blog-modal-title" id="modal-article-title">Article Title</h1>
+
+        <div class="blog-modal-author-row">
+          <div style="display: flex; align-items: center; gap: 0.5rem;">
+            <span class="material-symbols-outlined" style="font-size: 1.1rem; color: var(--primary);">person</span>
+            <strong id="modal-article-author" style="color: var(--on-surface);">Kelina Cyril</strong>
+          </div>
+          <span>•</span>
+          <div style="display: flex; align-items: center; gap: 0.35rem;">
+            <span class="material-symbols-outlined" style="font-size: 1rem;">calendar_today</span>
+            <span id="modal-article-date">August 14, 2024</span>
+          </div>
+          <span>•</span>
+          <div style="display: flex; align-items: center; gap: 0.35rem;">
+            <span class="material-symbols-outlined" style="font-size: 1rem;">schedule</span>
+            <span id="modal-article-readtime">6 min read</span>
+          </div>
+        </div>
+
+        <!-- Rendered Prose Content -->
+        <article class="blog-prose" id="modal-article-prose">
+          <!-- Formatted markdown/content injected here -->
+        </article>
+
+        <!-- Exit / Footer Box inside the Modal -->
+        <div class="blog-modal-footer-box">
+          <div style="font-size: 0.875rem; color: var(--on-surface-variant);">
+            Published from <strong>Department of Biotechnology, IIT Jodhpur</strong>
+          </div>
+          <button type="button" class="btn btn-secondary" onclick="closeBlogModal()">
+            <span class="material-symbols-outlined" style="font-size: 1rem;">arrow_upward</span>
+            <span>Close &amp; Return to Dispatches</span>
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Client Script -->
+  <script src="/js/blog.js"></script>
+</body>
+
+</html>

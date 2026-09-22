@@ -1,0 +1,238 @@
+{
+  "profile": {
+    "name": "Kelina Cyril",
+    "badge": "Personal Introduction",
+    "title": "PhD Student, Cellular & Molecular Neurobiology",
+    "tagline": "Driven by curiosity about the microscopic architecture of the mind.",
+    "bio": [
+      "I explore how living neurons communicate, adapt, and build the foundation of our memories. Combining an early love for biological photography with advanced microscopy, I spend my days peering into the quiet, complex beauty of cellular networks.",
+      "For me, science is both rigorous biophysics and deep creative wonder—tracing how thought and memory physically emerge at the nanometer scale."
+    ],
+    "avatar": "/uploads/IMG_9236_1790010813784_26017.jpeg",
+    "avatarCaption": "Cellular Neurobiology & Bioimaging student",
+    "links": {
+      "linkedin": "https://www.linkedin.com/in/kelinacyrilanthoni/",
+      "scholar": "https://scholar.google.com",
+      "orcid": "",
+      "email": "kelina@iitj.ac.in"
+    }
+  },
+  "pillars": [
+    {
+      "id": "pillar-1",
+      "number": "01",
+      "icon": "insights",
+      "title": "Dendritic Spine Kinetics & Structural Plasticity",
+      "description": "Investigating the rapid remodeling of actin cytoskeletons in post-synaptic heads following theta-burst stimuli. We monitor volume expansions and spine head translocations continuously over 72-hour observation windows.",
+      "tag": "Primary Focus",
+      "theme": "primary"
+    },
+    {
+      "id": "pillar-2",
+      "number": "02",
+      "icon": "blur_on",
+      "title": "High-Resolution Two-Photon & STED Nanoscopy",
+      "description": "Pushing spatial diffraction barriers deep inside living organotypic brain slices to resolve neurotransmitter vesicle clustering and receptor alignment across the synaptic cleft with nanometer precision.",
+      "tag": "Imaging Platform",
+      "theme": "secondary"
+    },
+    {
+      "id": "pillar-3",
+      "number": "03",
+      "icon": "hub",
+      "title": "Cortical Ensembles & Synaptic Transmission",
+      "description": "Recording calcium transient co-activation in Layer 2/3 pyramidal neurons during visual association tasks. We correlate cellular ensemble stability directly with synaptic spine longevity.",
+      "tag": "Functional In Vivo",
+      "theme": "tertiary"
+    },
+    {
+      "id": "pillar-4",
+      "number": "04",
+      "icon": "schema",
+      "title": "Computational Connectomics & 3D Volume Segmentation",
+      "description": "Designing deep convolutional neural network pipelines to reconstruct dense volumetric synaptic connectivity trees from terabyte-scale light and electron microscopy time-series.",
+      "tag": "Algorithm Design",
+      "theme": "dark"
+    }
+  ],
+  "trajectory": [
+    {
+      "id": "traj-1",
+      "badge": "Candidate in Progress",
+      "degree": "Ph.D. in Cellular & Molecular Neurobiology",
+      "institution": "Department of Neurobiology & Bioimaging Sciences",
+      "description": "Dissertation: \"Super-Resolution Nanometry of Post-Synaptic Scaffolding in Cortical Consolidation.\" Recipient of the National Neuroscience Predoctoral Fellowship.",
+      "period": "2021 – Present",
+      "theme": "primary"
+    },
+    {
+      "id": "traj-2",
+      "badge": "Undergraduate Degree",
+      "degree": "B.S. in Molecular Biology & Neuroscience",
+      "institution": "Faculty of Natural Sciences • Summa Cum Laude",
+      "description": "Senior Honor Thesis on hippocampal LTP attenuation in early degenerative micro-circuits. Dean’s Honor List (8 semesters), Valedictorian Nominee.",
+      "period": "2017 – 2021",
+      "theme": "secondary"
+    },
+    {
+      "id": "traj-3",
+      "badge": "Research Fellowship",
+      "degree": "HHMI Undergraduate Research Scholar",
+      "institution": "Howard Hughes Medical Institute (Janelia Visiting Track)",
+      "description": "Conducted 14-month rigorous experimental rotations developing automated microfluidic perfusion chambers for acute hippocampal slice electrophysiology.",
+      "period": "2019 – 2021",
+      "theme": "tertiary"
+    }
+  ],
+  "tooling": {
+    "categories": [
+      {
+        "id": "cat-1",
+        "name": "Bioimaging & Optics",
+        "theme": "primary",
+        "tools": [
+          "Two-Photon Calcium (GCaMP8)",
+          "STED Super-Resolution (CW & Pulsed)",
+          "FLIM (Fluorescence Lifetime)",
+          "FRAP Photobleaching Recovery"
+        ]
+      },
+      {
+        "id": "cat-2",
+        "name": "Electrophysiology & Manipulation",
+        "theme": "secondary",
+        "tools": [
+          "Whole-Cell Patch-Clamp",
+          "Stereotaxic AAV Viral Infusion",
+          "Channelrhodopsin Optogenetics",
+          "Field EPSP Recordings"
+        ]
+      },
+      {
+        "id": "cat-3",
+        "name": "Computation & Modeling",
+        "theme": "tertiary",
+        "tools": [
+          "Deep-Learning Spine Segmentation",
+          "Python (NumPy, SciPy, PyTorch)",
+          "Imaris 3D Kinetic Reconstructions",
+          "Fiji / ImageJ Custom Macros"
+        ]
+      }
+    ],
+    "certification": {
+      "title": "",
+      "description": ""
+    }
+  },
+  "gallery": [
+    {
+      "id": "media-1",
+      "title": "Dendritic Spine Nanometry",
+      "filename": "dendritic_spines_sted.jpg",
+      "url": "/uploads/dendritic_spines_sted.jpg",
+      "technique": "STED Super-Resolution",
+      "magnification": "100x Oil / 500nm scale",
+      "stain": "Actin / Synaptopodin (AF647 / STAR580)",
+      "description": "High-resolution stimulated emission depletion nanoscopy resolving actin ring contractions in CA1 dendritic spines.",
+      "date": "2024-04-12",
+      "sourceUrl": "https://doi.org/10.1038/s41583-024-00812-x"
+    },
+    {
+      "id": "media-2",
+      "title": "Cortical Ensemble Calcium Dynamics",
+      "filename": "two_photon_calcium.jpg",
+      "url": "/uploads/two_photon_calcium.jpg",
+      "technique": "Two-Photon In Vivo",
+      "magnification": "25x Water / 50µm scale",
+      "stain": "GCaMP8s Genetically Encoded Indicator",
+      "description": "In vivo functional imaging of Layer 2/3 pyramidal neurons during associative reward conditioning in mouse visual cortex.",
+      "date": "2024-05-18",
+      "sourceUrl": "https://doi.org/10.1016/j.neuron.2024.03.015"
+    },
+    {
+      "id": "media-3",
+      "title": "Synaptic Bouton 3D Connectomics",
+      "filename": "synaptic_connectomics.jpg",
+      "url": "/uploads/synaptic_connectomics.jpg",
+      "technique": "Cryo-ET & Deep Segmentation",
+      "magnification": "500nm scale reconstruction",
+      "stain": "Deep-learning 3D volume segmentation",
+      "description": "Dense connectomic segmentation isolating individual presynaptic vesicle pools, postsynaptic densities, and axonal paths.",
+      "date": "2024-06-02",
+      "sourceUrl": ""
+    }
+  ],
+  "blogs": [
+    {
+      "id": "blog-1",
+      "title": "Resolving Nanometer-Scale Actin Dynamics in Dendritic Spines with STED",
+      "slug": "resolving-nanometer-scale-actin-dynamics-sted",
+      "category": "Nanoscopy Protocols",
+      "date": "2024-08-14",
+      "readTime": "6 min read",
+      "coverImage": "/uploads/dendritic_spines_sted.jpg",
+      "excerpt": "How stimulated emission depletion nanoscopy bypasses the classical Abbe diffraction barrier to track rapid spine neck contractility following theta-burst induction.",
+      "content": "### The Diffraction Challenge in Live Synapses\n\nFor over a century, light microscopy was bound by Ernst Abbe's diffraction limit: structures closer together than approximately half the wavelength of light (~200 nm) blur into a single diffraction spot. In synaptic biology, this was catastrophic. Dendritic spine necks often narrow to 50–100 nm, and the postsynaptic density (PSD) measures under 350 nm across.\n\nStimulated Emission Depletion (STED) nanoscopy breaks this barrier by pairing an excitation laser beam with a donut-shaped depletion laser beam that turns off fluorophores at the periphery via stimulated emission, leaving only a sub-diffraction focal spot in the center.\n\n### Overcoming Phototoxicity in Living Slices\n\nWhen imaging organotypic hippocampal slices, excessive STED beam power causes immediate photobleaching and local heating artifacts. In our protocol:\n\n1. **Gating Time Windows**: Using time-correlated single-photon counting (TCSPC) allows us to reject early scattered photons and reduce required continuous depletion beam intensities by 40%.\n2. **Fluorophore Pairing**: We paired silicon rhodamine (SiR-Actin) with STAR 580 to minimize spectral bleed-through while ensuring rapid cell permeability without aggressive electroporation.\n3. **Perfusion Stability**: Constant oxygenated artificial cerebrospinal fluid (ACSF) with 95% O₂ / 5% CO₂ maintained at 32°C prevents focal drift.\n\n> *\"Resolving the spine neck in real time transformed our understanding of compartmentalized biochemical signaling from a theoretical model into an observable physical event.\"*\n\n### Key Takeaways\n- Spines exhibit rapid neck twitch contractions within 180 seconds of local glutamate uncaging.\n- Actin ring periodicities (~190 nm along dendritic shafts) stabilize within mature spine necks, acting as structural girders during long-term potentiation."
+    },
+    {
+      "id": "blog-2",
+      "title": "In Vivo Two-Photon Calcium Imaging: Navigating Artifacts in Cortical Layer 2/3",
+      "slug": "in-vivo-two-photon-calcium-imaging-layer-2-3",
+      "category": "Functional Imaging",
+      "date": "2024-07-02",
+      "readTime": "8 min read",
+      "coverImage": "/uploads/two_photon_calcium.jpg",
+      "excerpt": "Practical techniques for mitigating brain motion, neuropil contamination, and z-drift during awake-behaving mouse visual cortex assays.",
+      "content": "### Recording Cellular Ensembles in Awake Animals\n\nInvestigating neural plasticity during learning requires monitoring identified ensembles of pyramidal neurons across multiple consecutive days. In Layer 2/3 of mouse primary visual cortex, GCaMP8s enables single-action-potential resolution. However, awake imaging introduces challenges that do not exist in slice preparations.\n\n### Handling Neuropil Spillover and Z-Drift\n\nThe dense intertwining of unmyelinated axons and dendrites produces a diffuse background fluorescence (neuropil signal) that contaminates somatic regions of interest (ROIs).\n\n```python\n# Neuropil subtraction formula\n# F_corrected(t) = F_soma(t) - r * F_neuropil(t)\n# where r is empirically calibrated between 0.65 and 0.75\n```\n\n### Surgical Cranial Window Optimization\n\n- **3mm Double-Coverglass Technique**: A 3mm round glass coverslip glued to a 4mm outer ring creates gentle subdural pressure, virtually eliminating respiration-induced brain pulsations.\n- **Titanium Headplates**: Precision CNC-milled titanium headplates secured with cyanoacrylate and dental cement guarantee zero mechanical flex during head-fixation on the spherical treadmill.\n\n> *\"Signal fidelity in calcium imaging is 80% preparation mechanics and 20% post-processing algorithms. A pristine optical window always outperforms the most sophisticated deconvolution filter.\"*"
+    },
+    {
+      "id": "blog-3",
+      "title": "Connectomics at the Crossroads: Deep Learning in Synaptic Vesicle Segmentation",
+      "slug": "connectomics-deep-learning-vesicle-segmentation",
+      "category": "Bioinformatics & AI",
+      "date": "2024-06-15",
+      "readTime": "5 min read",
+      "coverImage": "/uploads/synaptic_connectomics.jpg",
+      "excerpt": "How hybrid 3D U-Nets and boundary distance transforms accelerate volumetric reconstruction of presynaptic active zones by 100x.",
+      "content": "### The Manual Annotation Bottleneck\n\nHigh-pressure freezing followed by cryo-electron tomography (cryo-ET) produces unprecedented three-dimensional volumes of intact synaptic boutons. Yet, segmenting individual neurotransmitter vesicles (each ~40 nm in diameter) and tracing active zone membranes manually took weeks per cubic micrometer.\n\n### Architecture of Our Segmentation Pipeline\n\nWe deployed a customized 3D Residual U-Net with isotropic voxel resampling and deep spatial feature extraction:\n\n1. **Sphere Distance Transform**: Predicting center coordinates rather than binary masks prevents touching vesicle instances from fusing into amorphous blobs.\n2. **Postsynaptic Density (PSD) Tracing**: Integrating multi-scale attention heads allowed automated recognition of electron-dense PSD matrices without manual seed point placement.\n\n### Experimental Verification\n\nBenchmarked against manual ground truth annotated by three independent neurobiologists, the automated segmentation achieved a 96.4% F1-score across 14,000 vesicles while slashing annotation time from 42 hours to 18 minutes."
+    }
+  ],
+  "contact": {
+    "labName": "Kelina Cyril",
+    "department": "Department of Biotechnology, IIT Jodhpur",
+    "mission": "Dedicated to high-resolution imaging and functional analysis of neuronal circuits and their plasticity.",
+    "email": "kelina@iitj.ac.in",
+    "office": "Biotechnology Building,IIT Jodhpur",
+    "copyright": "© 2026 Kelina Cyril. All rights reserved."
+  },
+  "inquiries": [
+    {
+      "id": "inq-1790046966767",
+      "name": "Prof. David Miller",
+      "email": "d.miller@edinburgh.ac.uk",
+      "subject": "STED Imaging Collaboration",
+      "message": "We are interested in your nanoscopy protocols for synaptic active zone tomography.",
+      "date": "2026-09-22T03:16:06.767Z",
+      "read": false
+    },
+    {
+      "id": "inq-1726891200000",
+      "name": "Dr. Marcus Vance",
+      "email": "m.vance@neuro-bio.ox.ac.uk",
+      "subject": "Research Collaboration",
+      "message": "Dear Kelina, I read your recent dispatch on STED nanoscopy of dendritic spines. We are preparing a multi-center connectomics proposal and would like to discuss potential collaboration.",
+      "date": "2024-08-18T10:30:00.000Z",
+      "read": true
+    },
+    {
+      "id": "inq-1726977600000",
+      "name": "Ananya Sharma",
+      "email": "ananya.s@biotech-alumni.edu",
+      "subject": "Student Mentorship & Lab Visit",
+      "message": "Respected Kelina ma'am, I am a Master's student in Biophysics at IIT Delhi. I am eager to learn more about your active zone tomography methods and prospective PhD positions.",
+      "date": "2024-09-02T14:15:00.000Z",
+      "read": false
+    }
+  ]
+}

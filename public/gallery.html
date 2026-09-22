@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Microscopy &amp; Bioimaging Gallery — Kelina Cyril</title>
+  <meta name="description"
+    content="High-resolution two-photon fluorescence, STED nanoscopy, and 3D connectomic reconstructions captured during synaptic plasticity assays.">
+
+  <!-- Typography & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap"
+    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+    rel="stylesheet">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+
+  <!-- Top Sticky Header -->
+  <header class="site-header" id="site-header">
+    <div class="container">
+      <a href="/" class="brand-title" id="header-brand-name" aria-label="Kelina Cyril">
+        <img src="/data/name.png" alt="Kelina Cyril" class="brand-logo-img">
+      </a>
+
+      <nav class="nav-menu" id="desktop-nav">
+        <a href="/" class="nav-link">Overview &amp; Works</a>
+        <!-- <a href="/#pillars" class="nav-link">Research Pillars</a>
+        <a href="/#trajectory" class="nav-link">Trajectory &amp; Tooling</a> -->
+        <a href="/gallery" class="nav-link active">Microscopy Gallery</a>
+        <a href="/blog" class="nav-link">Research Blog</a>
+        <a href="/contact" class="nav-link">Contact &amp; Collab</a>
+      </nav>
+
+      <button class="mobile-toggle-btn" id="mobile-toggle" aria-label="Toggle navigation">
+        <span class="material-symbols-outlined">menu</span>
+      </button>
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <div class="mobile-nav-panel" id="mobile-menu">
+      <a href="/" class="nav-link">Overview &amp; Works</a>
+      <!-- <a href="/#pillars" class="nav-link">Research Pillars</a> -->
+      <!-- <a href="/#trajectory" class="nav-link">Trajectory &amp; Tooling</a> -->
+      <a href="/gallery" class="nav-link active">Microscopy Gallery</a>
+      <a href="/blog" class="nav-link">Research Blog</a>
+      <a href="/contact" class="nav-link">Contact &amp; Collab</a>
+    </div>
+  </header>
+
+  <main style="padding-top: 5rem; flex: 1;">
+
+    <!-- Dedicated Gallery Hero -->
+    <section
+      style="padding: 4rem 0 2.5rem; background: radial-gradient(circle at top right, rgba(2, 132, 199, 0.06) 0%, transparent 60%); border-bottom: 1px solid var(--outline-variant);">
+      <div class="container">
+        <div style="max-width: 48rem;">
+          <div style="display: inline-flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem;">
+            <span class="gallery-pill secondary" style="font-size: 0.75rem; padding: 0.35rem 0.75rem;">
+              <span class="material-symbols-outlined" style="font-size: 0.95rem;">photo_library</span>
+              <span>Optical Nanoscopy &amp; Specimen Archive</span>
+            </span>
+          </div>
+          <h1
+            style="font-family: var(--font-editorial); font-size: clamp(2.2rem, 4.5vw, 3.2rem); font-weight: 400; color: var(--on-surface); line-height: 1.2; margin-bottom: 1rem;">
+            Microscopy &amp; Bioimaging Gallery
+          </h1>
+          <p style="font-size: 1.0625rem; color: var(--on-surface-variant); line-height: 1.65;">
+            High-resolution two-photon fluorescence, STED nanoscopy, and 3D connectomic reconstructions captured during
+            synaptic plasticity assays and structural remodeling experiments. Click any specimen to inspect
+            high-resolution
+            details or follow verified publication sources.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Gallery Grid & Filter Section -->
+    <section style="padding: 0rem 0 0rem;">
+      <div class="container">
+
+        <!-- Category / Technique Filters -->
+        <!-- <div class="filter-bar" id="gallery-filter-bar">
+          <button class="filter-chip active" data-filter="all">All Specimens</button>
+          <button class="filter-chip" data-filter="STED">STED Super-Resolution</button>
+          <button class="filter-chip" data-filter="Two-Photon">Two-Photon In Vivo</button>
+          <button class="filter-chip" data-filter="Cryo-ET">Cryo-ET Connectomics</button>
+        </div> -->
+
+        <!-- Specimen Grid Container -->
+        <div class="gallery-grid" id="gallery-container">
+          <!-- Dynamically populated cards -->
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Editorial Scientific Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-content">
+        <div>
+          <div class="footer-brand">
+            <span class="footer-lab-name" id="footer-lab-name">Synapse Laboratory</span>
+            <span class="footer-lab-badge">Cellular &amp; Molecular Neurobiology</span>
+          </div>
+          <p class="footer-mission" id="footer-mission-text">
+            Department of Biotechnology, IIT Jodhpur. Dedicated to high-resolution imaging and functional analysis of
+            neuronal circuits and their plasticity.
+          </p>
+        </div>
+
+        <div class="footer-links">
+          <span id="footer-copyright">© 2026 Kelina Cyril. All research rights reserved.</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Lightbox Modal for Microscopy Inspection -->
+  <div class="lightbox-backdrop" id="gallery-lightbox" aria-hidden="true">
+    <div class="lightbox-dialog">
+      <button class="lightbox-close-btn" id="lightbox-close" aria-label="Close modal">
+        <span class="material-symbols-outlined">close</span>
+      </button>
+      <div class="lightbox-media">
+        <img src="" alt="Specimen Inspection" class="lightbox-img" id="lightbox-img">
+      </div>
+      <div class="lightbox-meta">
+        <div class="lightbox-header">
+          <div>
+            <h3 class="lightbox-title" id="lightbox-title">Specimen Title</h3>
+            <span class="lightbox-filename" id="lightbox-filename">Imaging Technique</span>
+          </div>
+          <span class="lightbox-date" id="lightbox-date">Specimen Date</span>
+        </div>
+        <div class="lightbox-tags" id="lightbox-tags">
+          <!-- Tags populated here -->
+        </div>
+        <p class="lightbox-desc" id="lightbox-desc">Detailed scientific description.</p>
+
+        <!-- Conditional Source Link in Lightbox -->
+        <div id="lightbox-source-box" style="margin-top: 1.25rem; display: none;">
+          <a href="#" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" id="lightbox-source-btn"
+            style="font-size: 0.8125rem;">
+            <span class="material-symbols-outlined">open_in_new</span>
+            <span>View Source Publication / Dataset</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Client Script -->
+  <script src="/js/gallery.js"></script>
+</body>
+
+</html>

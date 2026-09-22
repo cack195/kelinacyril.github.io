@@ -1,0 +1,17 @@
+# Dependencies
+node_modules/
+
+# Environment Variables (Secrets)
+.env
+.env.example
+.env.local
+.env.*.local
+
+# Temporary database files & logs
+data/*.tmp
+*.log
+.DS_Store
+
+# IDE & Editor caches
+.vscode/
+.idea/
