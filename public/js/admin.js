@@ -22,13 +22,13 @@ async function verifySession() {
     const res = await fetch('/api/auth/me');
     const data = await res.json();
     if (!data.authenticated) {
-      window.location.href = '/login';
+      window.location.href = 'login.html';
     } else {
       const userDisplay = document.getElementById('admin-user-display');
       if (userDisplay && data.username) userDisplay.textContent = data.username;
     }
   } catch (err) {
-    window.location.href = '/login';
+    window.location.href = 'login.html';
   }
 }
 
@@ -79,7 +79,7 @@ function initLogout() {
     try {
       await fetch('/api/auth/logout', { method: 'POST' });
     } catch (e) {}
-    window.location.href = '/login';
+    window.location.href = 'login.html';
   });
 }
 

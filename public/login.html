@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Admin Portal Login — Elena Vance Portfolio</title>
+  <title>Admin Portal Login — Kelina Cyril Portfolio</title>
   
   <!-- Typography & Icons -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -141,8 +141,21 @@
         </div>
         <h1 class="login-title">Sign In</h1>
         <p class="login-subtitle">
-          Manage media, research pillars, and curriculum vitae for the Elena Vance portfolio.
+          Manage media, research pillars, and curriculum vitae for the Kelina Cyril portfolio.
         </p>
+      </div>
+
+      <!-- Static Host Notice Banner -->
+      <div id="static-host-banner" style="display: none; background-color: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; padding: 1rem; margin-bottom: 1.5rem; text-align: left;">
+        <div style="display: flex; gap: 0.75rem; align-items: flex-start;">
+          <span class="material-symbols-outlined" style="color: #16a34a; font-size: 1.25rem; margin-top: 2px;">info</span>
+          <div style="font-size: 0.825rem; color: #1e293b; line-height: 1.45;">
+            <strong style="color: #0f172a; display: block; margin-bottom: 0.25rem;">GitHub Pages (Static Mode)</strong>
+            GitHub Pages serves the static public website. To access the live CMS and edit your content, start your local server in terminal:
+            <div style="background: #0f172a; color: #38bdf8; padding: 0.4rem 0.65rem; border-radius: 6px; font-family: var(--font-mono); font-size: 0.8rem; margin: 0.4rem 0;">npm start</div>
+            and open <a href="http://localhost:3000/login" style="color: var(--primary); font-weight: 600; text-decoration: underline;">http://localhost:3000/login</a>.
+          </div>
+        </div>
       </div>
 
       <div class="error-alert" id="login-error">
@@ -181,10 +194,22 @@
     const errorAlert = document.getElementById('login-error');
     const errorMsg = document.getElementById('error-message');
     const submitBtn = document.getElementById('submit-btn');
+    const staticBanner = document.getElementById('static-host-banner');
+
+    const isStaticHost = window.location.hostname.endsWith('github.io') || window.location.protocol === 'file:';
+    if (isStaticHost && staticBanner) {
+      staticBanner.style.display = 'block';
+    }
 
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
       errorAlert.style.display = 'none';
+
+      if (isStaticHost) {
+        errorMsg.innerHTML = 'GitHub Pages is static and cannot process logins. Run <code>npm start</code> in your terminal and open <a href="http://localhost:3000/login" style="text-decoration: underline; font-weight: 600;">http://localhost:3000/login</a> to log in.';
+        errorAlert.style.display = 'flex';
+        return;
+      }
 
       const username = form.username.value.trim();
       const password = form.password.value;
@@ -201,7 +226,7 @@
 
         const data = await res.json();
         if (res.ok && data.success) {
-          window.location.href = '/admin';
+          window.location.href = 'admin.html';
         } else {
           errorMsg.textContent = data.error || 'Authentication failed';
           errorAlert.style.display = 'flex';
