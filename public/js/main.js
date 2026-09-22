@@ -23,12 +23,30 @@ function initMobileMenu() {
   });
 }
 
+// Helper to normalize image/asset URLs for both local and GitHub Pages subpath hosting
+function fixAssetUrl(url) {
+  if (!url || typeof url !== 'string') return '';
+  if (url.startsWith('http://') || url.startsWith('https://') || url.startsWith('data:')) return url;
+  return url.replace(/^\/+/, '');
+}
+
 // Fetch and hydrate dynamic portfolio data
 async function loadPortfolioContent() {
   try {
-    let res = await fetch('/api/content').catch(() => null);
+    const isStaticHost = window.location.hostname.endsWith('github.io') || window.location.protocol === 'file:';
+    let res = null;
+    if (!isStaticHost) {
+      try {
+        res = await fetch('/api/content');
+      } catch (_) {}
+    }
     if (!res || !res.ok) {
-      res = await fetch('/data/portfolio.json');
+      try {
+        res = await fetch('data/portfolio.json');
+      } catch (_) {}
+    }
+    if (!res || !res.ok) {
+      res = await fetch('./data/portfolio.json');
     }
     if (!res.ok) throw new Error(`HTTP error ${res.status}`);
     const data = await res.json();
@@ -41,7 +59,7 @@ async function loadPortfolioContent() {
     renderBlogPreview(data.blogs);
     renderContact(data.contact);
   } catch (err) {
-    console.error('Failed to load portfolio content from API:', err);
+    console.error('Failed to load portfolio content:', err);
   }
 }
 
@@ -86,7 +104,7 @@ function renderProfile(profile) {
   // Avatar image
   const avatarEl = document.getElementById('hero-avatar');
   if (avatarEl && profile.avatar) {
-    avatarEl.src = profile.avatar;
+    avatarEl.src = fixAssetUrl(profile.avatar);
     avatarEl.alt = `${profile.name}, Doctoral Researcher`;
   }
 }
@@ -198,7 +216,7 @@ function renderGallery(gallery) {
       return `
       <div class="gallery-card" onclick="openLightbox(${index})">
         <div class="gallery-thumb-wrap">
-          <img src="${escapeHtml(item.url)}" alt="${escapeHtml(item.title)}" class="gallery-thumb" loading="lazy">
+          <img src="${escapeHtml(fixAssetUrl(item.url))}" alt="${escapeHtml(item.title)}" class="gallery-thumb" loading="lazy">
           <div class="gallery-overlay-badge">
             <span class="material-symbols-outlined" style="font-size: 0.9rem;">biotech</span>
             <span>${escapeHtml(item.technique || 'Bioimaging')}</span>
@@ -248,13 +266,13 @@ function renderBlogPreview(blogs) {
   container.innerHTML = blogs
     .slice(0, 3)
     .map((item) => {
-      const cover = item.coverImage || '/uploads/dendritic_spines_sted.jpg';
+      const cover = fixAssetUrl(item.coverImage || 'uploads/dendritic_spines_sted.jpg');
       const category = item.category || 'Research Notes';
       const date = item.date || 'Recent';
       const readTime = item.readTime || '5 min read';
 
       return `
-        <article class="blog-card" onclick="window.location.href='/blog#dispatch-${escapeHtml(item.id)}'" role="button" tabindex="0" aria-label="Read article: ${escapeHtml(item.title)}">
+        <article class="blog-card" onclick="window.location.href='blog.html#dispatch-${escapeHtml(item.id)}'" role="button" tabindex="0" aria-label="Read article: ${escapeHtml(item.title)}">
           <div class="blog-card-thumb-wrap">
             <img src="${escapeHtml(cover)}" alt="${escapeHtml(item.title)}" class="blog-card-thumb" loading="lazy">
             <div class="blog-card-badge">
@@ -334,7 +352,7 @@ window.openLightbox = function (index) {
   const tags = document.getElementById('lightbox-tags');
   const filename = document.getElementById('lightbox-filename');
 
-  img.src = item.url;
+  img.src = fixAssetUrl(item.url);
   img.alt = item.title;
   title.textContent = item.title;
   desc.textContent = item.description || '';

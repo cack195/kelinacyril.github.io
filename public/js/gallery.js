@@ -19,6 +19,12 @@ function escapeHtml(str) {
     .replace(/'/g, '&#039;');
 }
 
+function fixAssetUrl(url) {
+  if (!url || typeof url !== 'string') return '';
+  if (url.startsWith('http://') || url.startsWith('https://') || url.startsWith('data:')) return url;
+  return url.replace(/^\/+/, '');
+}
+
 // Mobile menu toggle
 function initMobileMenu() {
   const toggleBtn = document.getElementById('mobile-toggle');
@@ -36,12 +42,23 @@ function initMobileMenu() {
   });
 }
 
-// Load Content from Server API
+// Load Content from Server API or static fallback
 async function loadGalleryContent() {
   try {
-    let res = await fetch('/api/content').catch(() => null);
+    const isStaticHost = window.location.hostname.endsWith('github.io') || window.location.protocol === 'file:';
+    let res = null;
+    if (!isStaticHost) {
+      try {
+        res = await fetch('/api/content');
+      } catch (_) {}
+    }
     if (!res || !res.ok) {
-      res = await fetch('/data/portfolio.json');
+      try {
+        res = await fetch('data/portfolio.json');
+      } catch (_) {}
+    }
+    if (!res || !res.ok) {
+      res = await fetch('./data/portfolio.json');
     }
     if (!res.ok) throw new Error(`HTTP error ${res.status}`);
     const data = await res.json();
@@ -131,7 +148,7 @@ function renderGalleryGrid(items) {
       return `
         <div class="gallery-card" onclick="openGalleryLightbox(${index})">
           <div class="gallery-thumb-wrap">
-            <img src="${escapeHtml(item.url)}" alt="${escapeHtml(item.title)}" class="gallery-thumb" loading="lazy">
+            <img src="${escapeHtml(fixAssetUrl(item.url))}" alt="${escapeHtml(item.title)}" class="gallery-thumb" loading="lazy">
             <div class="gallery-overlay-badge">
               <span class="material-symbols-outlined" style="font-size: 0.9rem;">biotech</span>
               <span>${escapeHtml(item.technique || 'Bioimaging')}</span>
@@ -198,7 +215,7 @@ window.openGalleryLightbox = function (index) {
   const sourceBox = document.getElementById('lightbox-source-box');
   const sourceBtn = document.getElementById('lightbox-source-btn');
 
-  img.src = item.url;
+  img.src = fixAssetUrl(item.url);
   img.alt = item.title;
   title.textContent = item.title;
   desc.textContent = item.description || '';

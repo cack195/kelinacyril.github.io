@@ -256,7 +256,7 @@ app.post('/api/content/profile-image', requireAuth, upload.single('profileImage'
     return res.status(400).json({ error: 'No image file uploaded' });
   }
   const data = readData();
-  const avatarUrl = `/uploads/${req.file.filename}`;
+  const avatarUrl = `uploads/${req.file.filename}`;
   data.profile.avatar = avatarUrl;
   writeData(data);
   res.json({ success: true, avatarUrl, filename: req.file.filename });
@@ -378,7 +378,7 @@ app.post('/api/content/media', requireAuth, upload.single('mediaImage'), (req, r
     id: `media-${Date.now()}`,
     title,
     filename: req.file.filename,
-    url: `/uploads/${req.file.filename}`,
+    url: `uploads/${req.file.filename}`,
     technique: technique || 'Bioimaging',
     magnification: magnification || 'High-Power',
     stain: stain || 'Fluorescence',
@@ -464,7 +464,7 @@ app.post('/api/content/blogs', requireAuth, upload.single('coverImage'), (req, r
   let coverImage = (imageUrl || '').trim();
   let filename = '';
   if (req.file) {
-    coverImage = `/uploads/${req.file.filename}`;
+    coverImage = `uploads/${req.file.filename}`;
     filename = req.file.filename;
   }
 
@@ -508,7 +508,7 @@ app.put('/api/content/blogs/:id', requireAuth, upload.single('coverImage'), (req
   let filename = current.filename || '';
 
   if (req.file) {
-    coverImage = `/uploads/${req.file.filename}`;
+    coverImage = `uploads/${req.file.filename}`;
     filename = req.file.filename;
     if (current.filename && current.filename !== filename) {
       const oldPath = path.join(UPLOADS_DIR, current.filename);

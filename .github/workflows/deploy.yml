@@ -31,8 +31,9 @@ jobs:
           # Ensure public/data has portfolio.json and name.png
           cp data/portfolio.json public/data/portfolio.json
           cp data/name.png public/data/name.png
-          # Remove admin credentials from public static json
-          node -e "const fs = require('fs'); const file = 'public/data/portfolio.json'; if (fs.existsSync(file)) { const d = JSON.parse(fs.readFileSync(file, 'utf8')); delete d.admin; fs.writeFileSync(file, JSON.stringify(d, null, 2)); }"
+          # Remove admin credentials and ensure relative paths in public static json
+          node -e "const fs = require('fs'); const file = 'public/data/portfolio.json'; if (fs.existsSync(file)) { let text = fs.readFileSync(file, 'utf8').replace(/\"\/uploads\//g, '\"uploads/'); const d = JSON.parse(text); delete d.admin; fs.writeFileSync(file, JSON.stringify(d, null, 2)); }"
+          touch public/.nojekyll
 
       - name: Setup Pages
         uses: actions/configure-pages@v5

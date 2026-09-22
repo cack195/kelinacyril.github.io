@@ -18,11 +18,22 @@
   // 2. Fetch & Render Dynamic Institutional Data
   async function loadContactData() {
     try {
-      let res = await fetch('/api/content').catch(() => null);
-      if (!res || !res.ok) {
-        res = await fetch('/data/portfolio.json');
+      const isStaticHost = window.location.hostname.endsWith('github.io') || window.location.protocol === 'file:';
+      let res = null;
+      if (!isStaticHost) {
+        try {
+          res = await fetch('/api/content');
+        } catch (_) {}
       }
-      if (!res.ok) return;
+      if (!res || !res.ok) {
+        try {
+          res = await fetch('data/portfolio.json');
+        } catch (_) {}
+      }
+      if (!res || !res.ok) {
+        res = await fetch('./data/portfolio.json');
+      }
+      if (!res || !res.ok) return;
       const data = await res.json();
 
       // Guard brand name logo

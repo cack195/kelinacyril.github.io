@@ -20,6 +20,12 @@ function escapeHtml(str) {
     .replace(/'/g, '&#039;');
 }
 
+function fixAssetUrl(url) {
+  if (!url || typeof url !== 'string') return '';
+  if (url.startsWith('http://') || url.startsWith('https://') || url.startsWith('data:')) return url;
+  return url.replace(/^\/+/, '');
+}
+
 // Convert simple markdown/formatted text into clean HTML for large articles
 function renderMarkdownToHtml(markdown) {
   if (!markdown) return '';
@@ -97,12 +103,23 @@ function initMobileMenu() {
   });
 }
 
-// Load Blogs from API
+// Load Blogs from API or static fallback
 async function loadBlogContent() {
   try {
-    let res = await fetch('/api/content').catch(() => null);
+    const isStaticHost = window.location.hostname.endsWith('github.io') || window.location.protocol === 'file:';
+    let res = null;
+    if (!isStaticHost) {
+      try {
+        res = await fetch('/api/content');
+      } catch (_) {}
+    }
     if (!res || !res.ok) {
-      res = await fetch('/data/portfolio.json');
+      try {
+        res = await fetch('data/portfolio.json');
+      } catch (_) {}
+    }
+    if (!res || !res.ok) {
+      res = await fetch('./data/portfolio.json');
     }
     if (!res.ok) throw new Error(`HTTP error ${res.status}`);
     const data = await res.json();
@@ -191,7 +208,7 @@ function renderBlogGrid(items) {
 
   container.innerHTML = items
     .map((item) => {
-      const cover = item.coverImage || '/uploads/dendritic_spines_sted.jpg';
+      const cover = fixAssetUrl(item.coverImage || 'uploads/dendritic_spines_sted.jpg');
       const category = item.category || 'Research Notes';
       const date = item.date || 'Recent';
       const readTime = item.readTime || '5 min read';
@@ -272,7 +289,7 @@ window.openBlogModal = function (blogId) {
 
   // Populate data
   if (blog.coverImage) {
-    coverImg.src = blog.coverImage;
+    coverImg.src = fixAssetUrl(blog.coverImage);
     coverImg.alt = blog.title;
     coverImg.style.display = 'block';
   } else {
